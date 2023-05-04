@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  cassandra-m4m:
+    image: cassandra:4.0
+    container_name: cassandra-m4m
+    ports:
+      - '9042:9042'
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cloudinfra
+      #- CASSANDRA_USER=cassandra
+      #- CASSANDRA_PASSWORD=cassandra
+      - CASSANDRA_LOCAL_DC=datacenter1
+      - MONITORING_PROMETHEUS=false
+      - MONITORING_GRAFANA=false
+      - DISTRIBUTED_TRACING_ENABLED=false
+      # entrypoint: ["/init.sh"]
+    volumes:
+      #- ./app-data/cassandra-m4m/init.sh:/init.sh
+      - ./app-data/cassandra-m4m:/var/lib/cassandra
