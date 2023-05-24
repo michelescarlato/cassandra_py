@@ -1,0 +1,22 @@
+INFO:root:Result object: april
+WARNING:cassandra.cluster:Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+WARNING:cassandra.cluster:Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+WARNING:cassandra.cluster:Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+INFO:cassandra.policies:Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+WARNING:cassandra.cluster:Failed to create connection pool for new host 127.0.0.1:9042:
+Traceback (most recent call last):
+  File "cassandra/connection.py", line 1469, in cassandra.connection.Connection.set_keyspace_blocking
+  File "cassandra/connection.py", line 1048, in cassandra.connection.Connection.wait_for_response
+  File "cassandra/connection.py", line 1095, in cassandra.connection.Connection.wait_for_responses
+  File "cassandra/connection.py", line 1090, in cassandra.connection.Connection.wait_for_responses
+  File "cassandra/connection.py", line 1600, in cassandra.connection.ResponseWaiter.deliver
+cassandra.InvalidRequest: Error from server: code=2200 [Invalid query] message="Keyspace 'sensor_data' does not exist"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "cassandra/cluster.py", line 3191, in cassandra.cluster.Session.add_or_renew_pool.run_add_or_renew_pool
+  File "cassandra/pool.py", line 409, in cassandra.pool.HostConnection.__init__
+  File "cassandra/connection.py", line 1477, in cassandra.connection.Connection.set_keyspace_blocking
+cassandra.connection.ConnectionException: Problem while setting keyspace: InvalidRequest('Error from server: code=2200 [Invalid query] message="Keyspace \'sensor_data\' does not exist"')
+WARNING:cassandra.cluster:Host 127.0.0.1:9042 has been marked down
