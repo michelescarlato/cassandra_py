@@ -1,1 +1,4 @@
+.idea/
 app-data/*
+CassandraMira4machineCode/*
+mira_utils/__pycache__/*

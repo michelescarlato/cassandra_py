@@ -5,23 +5,24 @@ def read_conf_insert_data(conf_file):
     config.read(conf_file)
     config.sections()
     # Store the URL of your InfluxDB instance
-    my_url = config['questdb.parameters']['url']
-    secs_interval = config['questdb.parameters']['secs_interval']
-    table = config['questdb.parameters']['table']
-    dbname = config['questdb.parameters']['dbname']
+    my_url = config['cassandra.parameters']['url']
+    secs_interval = config['cassandra.parameters']['secs_interval']
+    table = config['cassandra.parameters']['table']
+    keyspace = config['cassandra.parameters']['keyspace']
+    port = config['cassandra.parameters']['port']
 
-    return my_url, secs_interval, table, dbname
+    return my_url, secs_interval, table, keyspace, port
 
 def read_conf_fetch_data(conf_file):
     config = configparser.ConfigParser()
     config.read(conf_file)
     config.sections()
     # Store the URL of your InfluxDB instance
-    my_url = config['questdb.parameters']['url']
-    user = config['questdb.parameters']['user']
-    password = config['questdb.parameters']['password']
-    table = config['questdb.parameters']['table']
-    dbname = config['questdb.parameters']['dbname']
-    port = config['questdb.parameters']['port']
+    my_url = config['cassandra.parameters']['url']
+    user = config['cassandra.parameters']['user']
+    password = config['cassandra.parameters']['password']
+    table = config['cassandra.parameters']['table']
+    keyspace = config['cassandra.parameters']['keyspace']
+    port = config['cassandra.parameters']['port']
 
-    return my_url, user, table, dbname, password, port
+    return my_url, user, table, keyspace, password, port
